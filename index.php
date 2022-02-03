@@ -71,6 +71,7 @@
                     <div id="btnNuevoPriv" style="display: none;" >
                         <button class="btn btn-primary anchobtn"  data-bs-toggle="modal" data-bs-target="#Registro" ><span class="fa fa-plus" style="padding-right:10px; "></span>  Nuevo</button>
                     </div>
+                    <button class="btn btn-primary anchobtn"  data-bs-toggle="modal" data-bs-target="#Rango" ><span class="fa fa-plus" style="padding-right:10px; "></span>  Rango</button>
                     <button class="btn btn-primary anchobtn" id="btnBuscar" onclick="buscar(), cerrarTotal()"><span class="fas fa-search" style="padding-right:10px;"></span>   Buscar</button>
                     <button class="btn btn-primary anchobtn" id="btntotal" onclick="capturaTotal('Total a nivel instituto'),cierraBuscar()"><span class="fas fa-poll" style="padding-right:10px;"></span>  Total</button>
                     <div class="btn-group">
@@ -304,15 +305,11 @@
 
                             <div class="row form-group" style="margin-top:15px; margin-bottom: 15px;">
                                 <div class="col-sm-2">
-                                    <label class="control-label">Estado:</label>
+                                    <label class="control-label">Nota obtenida:</label>
                                 </div>
-                                <div class="col-sm-4">
-                                    <select name="estado" class="form-control" required>
-                                        <option value="">--Elegir--</option>
-                                        <option value="APROBADO">APROBADO</option>
-                                        <option value="REPROBADO">REPROBADO</option>
-                                    </select>
-                                </div>
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control" name="nota" required>
+                                </div>                           
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-bs-dismiss="modal" onclick="BorrarDatos()">  <span class="fa fa-close"></span> Cancelar</button>
@@ -325,12 +322,66 @@
                 </div>
             </div>
         </div>
-        
-        
 
+        <!-- MODAL PARA RANGO DE NOTAS -->
+
+        <div class="modal fade" id="Rango" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <center><h4 class="modal-title" id="myModalLabel">Editar postulante</h4></center>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                        
+                    </div>
+                
+                <div class="modal-body">
+                    <div class="container-fluid">
+                            <div class="row form-group">
+                                <div class="col-sm-5">
+                                    <input type="hidden" class="form-control" name="id" id="editar-text"  required>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="btn-group">
+                                    <button type="button"  onclick="cierraBuscar(), cerrarTotal()" class="btn btn-primary dropdown-toggle anchobtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Carreras
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(1,'SISTEMAS INFORMÁTICOS')">SISTEMAS INFORMÁTICOS  </a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(2,'CONSTRUCCIÓN CIVIL')">CONSTRUCCIÓN CIVIL </a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(3,'ELECTRICIDAD INDUSTRIAL')">ELECTRICIDAD INDUSTRIAL </a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(4,'INDUSTRIA TEXTIL Y CONFECCIÓN')">INDUSTRIA TEXTIL Y CONFECCIÓN </a></li>              
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(5,'MECÁNICA AUTOMOTRÍZ')">MECÁNICA AUTOMOTRÍZ  </a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="editarRango(6,'REDES DE GAS Y SOLDADURA EN DUCTOS')">REDES DE GAS Y SOLDADURA EN DUCTOS  </a></li>
+                                    </ul>
+                                </div>
+                                <div id="cuerpoCarrera" class="row form-group" style="margin-top:15px; margin-bottom: 15px;">
+
+                                </div>
+                                <div class="row form-group" style="margin-top:15px; margin-bottom: 15px;">
+                                    <div class="col-sm-2">
+                                        <label class="control-label">Nota mínima:</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="number" id="rango" class="form-control" name="rango" required>
+                                    </div>                           
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-bs-dismiss="modal" onclick="BorrarDatos()">  <span class="fa fa-close"></span> Cancelar</button>
+                                <button type="button" id="guardarRango" class="btn btn-success" ><span class="fa fa-save"></span> Guardar</button>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="js/main.js?1"></script>
+        <script src="js/main.js?2"></script>
 </body>
 </html>
 

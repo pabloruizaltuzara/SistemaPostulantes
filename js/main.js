@@ -1,5 +1,6 @@
-
 const URL = "https://apirestitpm.itpm.edu.bo/api/index.php/";
+
+let updateRange = "";
 
 
 //Inicio de sesión
@@ -77,8 +78,6 @@ function capturaTotal(inst){
             </div>`
             for (let index = 0; index < pack.carreras.length; index++) {
               const element = pack.carreras[index].nombre;
-              console.log(element);
-              console.log(pack.carreras[index].datos.total);
               cuerpo += `<div class="card-header" id="cabeza" style="font-size:1.5rem; font-weight: bold;">
               ${element}                   
               </div>
@@ -100,6 +99,7 @@ filtroBtn.addEventListener("click", function(e){
     let data = new FormData();
     data.append("txtCiFiltro", txtFiltro);
     document.getElementById('Contenedor-Total').innerHTML ="";
+    document.getElementById('resultado-Busqueda').innerHTML ="";
     fetch(URL + "Alumnos/filtroAlumnos", {method: 'POST', body: data})
       .then(json=>json.json())
       .then(pack=>{
@@ -127,13 +127,12 @@ formularioEditar.addEventListener("submit", function(e){
       .then(pack=>{
         if(pack.estado === 'ok'){
           document.getElementById('editar-form').reset();
+          document.getElementById('resultado-Busqueda').innerHTML="";
           alert('Datos actualizados');
         }else{
           document.getElementById('editar-form').reset();
           alert('No se editó');
         }
-          
-
       });
 }) 
 
@@ -162,11 +161,44 @@ const filtroTotalCarreras = (id,inst) =>{
 
 }
 
-//Reporte por carreras
-const reporteCarreras = (id,inst) =>{
-  window.location = "https://apirestitpm.itpm.edu.bo/pdf/fpdf/tutorial/reportAlumnos.php?id_carr="+id+"&carr="+inst;
+//Editar rango por carreras
+
+const editarRango = (id, nombre) => {
+  updateRange = id;
+  document.getElementById('cuerpoCarrera').innerHTML = `<h3>${nombre}</h3> `
 }
 
+const rangoBtn = document.getElementById('guardarRango');
+rangoBtn.onclick =()=>{
+  let valorRango = document.getElementById('rango').value;
+  
+  console.log(updateRange, valorRango);
+
+  let data = new FormData();
+  data.append("id", updateRange);
+  data.append("rango", valorRango);
+  if(document.getElementById('rango').value != ""){
+    fetch(URL + "Grado/update", {method: 'POST', body:data})
+    .then(json=>json.json())
+    .then(pack=>{
+      if(pack.estado === 'ok'){
+        document.getElementById('cuerpoCarrera').innerHTML = "";
+        document.getElementById('rango').value ="";
+        alert('Rango de nota actualizado');
+      }else{
+        alert('No se editó el rango de nota');
+      }
+    });
+  }
+  else{
+    alert('Es obligatorio llenar el campo');
+  }
+}
+
+//Reporte por carreras
+const reporteCarreras = (id,inst) =>{
+  window.location = "https://apirestitpm.itpm.edu.bo/pdf/fpdf/tutorial/reportAlumnosRepApro.php?id_carr="+id+"&carr="+inst;
+}
 
 
 //Abre la ventana para buscar
@@ -177,6 +209,7 @@ function buscar(){
 //Cierra cancela la ventana para buscar
 function cierraBuscar(){
   document.getElementById('Contenido-Buscar').style.display = "none";
+  document.getElementById('resultado-Busqueda').innerHTML ="";
 }
 
 //Captura el correo del inicio de sesión correcto 
