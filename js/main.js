@@ -200,6 +200,12 @@ const reporteCarreras = (id,inst) =>{
   window.location = "https://apirestitpm.itpm.edu.bo/pdf/fpdf/tutorial/reportAlumnosRepApro.php?id_carr="+id+"&carr="+inst;
 }
 
+//Reporte para alumnos
+const reporteAlumnos = (id,inst) =>{
+  window.location = "https://apirestitpm.itpm.edu.bo/pdf/fpdf/tutorial/reportAlumnos.php?id_carr="+id+"&carr="+inst;
+}
+
+
 
 //Abre la ventana para buscar
 function buscar(){

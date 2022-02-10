@@ -100,6 +100,19 @@
                             <li><a class="dropdown-item" href="#" onclick="reporteCarreras(6,'REDES DE GAS Y SOLDADURA EN DUCTOS')">REDES DE GAS Y SOLDADURA EN DUCTOS  </a></li>
                         </ul>
                     </div>
+                    <div class="btn-group">
+                        <button type="button"  onclick="cierraBuscar(), cerrarTotal()" class="btn btn-success dropdown-toggle anchobtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="fas fa-print" style="padding-right:10px;"></span>Estudiantes
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(1,'SISTEMAS INFORMÁTICOS')">SISTEMAS INFORMÁTICOS </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(2,'CONSTRUCCIÓN CIVIL')">CONSTRUCCIÓN CIVIL </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(3,'ELECTRICIDAD INDUSTRIAL')">ELECTRICIDAD INDUSTRIAL </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(4,'INDUSTRIA TEXTIL Y CONFECCIÓN')">INDUSTRIA TEXTIL Y CONFECCIÓN </a></li>              
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(5,'MECÁNICA AUTOMOTRÍZ')">MECÁNICA AUTOMOTRÍZ  </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="reporteAlumnos(6,'REDES DE GAS Y SOLDADURA EN DUCTOS')">REDES DE GAS Y SOLDADURA EN DUCTOS  </a></li>
+                        </ul>
+                    </div>
                 </div>  
                     
             </div>
@@ -381,7 +394,7 @@
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="js/main.js?2"></script>
+        <script src="js/main.js?3"></script>
 </body>
 </html>
 
